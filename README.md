@@ -1,13 +1,12 @@
-# Project Name
+# Bedroost Gallery Module
 
 > Project description
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/bedroost/review
+  - https://github.com/bedroost/description
+  - https://github.com/bedroost/booking
 
 ## Table of Contents
 
@@ -17,7 +16,7 @@
 
 ## Usage
 
-> Some usage instructions
+> npm install
 
 ## Requirements
 
