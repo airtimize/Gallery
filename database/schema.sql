@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS bedroostimages;
 
+USE bedroostimages;
+
 CREATE TABLE IF NOT EXISTS listings (
   listingID INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(40),
@@ -11,7 +13,7 @@ CREATE TABLE IF NOT EXISTS images (
   ImageID INT AUTO_INCREMENT PRIMARY KEY,
   ImageUrl VARCHAR(40),
   Caption VARCHAR(40),
-  Verified BIT,
+  Verified INT,
   FOREIGN KEY (listing_ID)
-    REFERENCES listings(listingID)
+    REFERENCES listings (listingID)
 );
