@@ -8,8 +8,6 @@ const connection = mysql.createConnection({
 });
 
 const sql = `
-DROP DATABASE IF EXISTS bedroostimages;
-
 CREATE DATABASE IF NOT EXISTS bedroostimages;
 
 USE bedroostimages;

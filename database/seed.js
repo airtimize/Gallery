@@ -46,7 +46,7 @@ unsplash.getImages('house', (err, houseData) => {
             db.query(imageSql, [images], (error, success) => {
               if (error) {
                 console.log('error inserting images');
-                console.log(error.code)
+                console.log(error.code);
               } else {
                 console.log('survived callback hell');
               }
