@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS listings (
 CREATE TABLE IF NOT EXISTS images (
   listing_id INT NOT NULL,
   ImageID INT AUTO_INCREMENT PRIMARY KEY,
-  ImageUrl VARCHAR(40),
+  ImageUrl VARCHAR(200),
   Caption VARCHAR(40),
   Verified INT,
   FOREIGN KEY (listing_ID)
