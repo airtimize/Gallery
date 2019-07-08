@@ -1,4 +1,70 @@
 body {
-  background-color: cornflowerblue;
+  background-color: bisque;
 }
 
+.container-1 {
+  display: flex;
+  /* overflow: hidden; */
+  box-sizing: border-box;
+}
+
+.container-2 {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.image-container {
+  border: 2px solid #484848;
+}
+
+.big-image {
+  border: 6px solid darkolivegreen
+}
+
+#image-0 {
+  border: 6px solid black;
+  height: 350px;
+  width: 660px;
+  overflow: hidden;
+}
+
+#image-1 {
+  border: 6px solid red;
+  height: 350px;
+  width: 660px;
+  overflow: hidden;
+}
+
+#image-2 {
+  border: 6px solid blue;
+  height: 350px;
+  width: 660px;
+  overflow: hidden;
+}
+
+#image-3 {
+  border: 6px solid peru;
+  height: 350px;
+  width: 660px;
+  overflow: hidden;
+}
+
+#image-4 {
+  border: 6px solid rebeccapurple;
+  height: 350px;
+  width: 660px;
+  overflow: hidden;
+}
+
+.container-2 img {
+  width: auto;
+  max-width: 660px;
+  height: auto;
+  max-height: 660px;
+}
+
+.image:hover {
+  transition: all .3s ease-in-out;
+  transform: scale(1.1);
+}
