@@ -2,13 +2,13 @@ body {
   background-color: bisque;
 }
 
-.container-1 {
+.gallery-container-1 {
   display: flex;
   /* overflow: hidden; */
   box-sizing: border-box;
 }
 
-.container-2 {
+.gallery-container-2 {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -18,7 +18,7 @@ body {
   border: 2px solid #484848;
 }
 
-.big-image {
+.gallery-big-image {
   border: 6px solid darkolivegreen
 }
 
@@ -57,14 +57,18 @@ body {
   overflow: hidden;
 }
 
-.container-2 img {
+.gallery-container-2 img {
   width: auto;
   max-width: 660px;
   height: auto;
   max-height: 660px;
 }
 
-.image:hover {
+.gallery-image:hover {
   transition: all .3s ease-in-out;
   transform: scale(1.1);
+}
+
+.carousel-image-list {
+  display: flex;
 }
