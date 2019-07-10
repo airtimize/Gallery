@@ -24,7 +24,7 @@ class App extends React.Component {
 
   getData() {
     //const listing = window.location.href.split('/')[4];
-    axios.get('/api/1/images')
+    axios.get('/api/2/images')
       .then((response) => {
         this.setState({ images: response.data });
       })
@@ -65,7 +65,7 @@ class App extends React.Component {
         }
         const imagesStartingAtClicked = images.slice(startID).concat(images.slice(0,startID));
         return (
-          <Carousel images={imagesStartingAtClicked} />
+          <Carousel imageClickHandler={this.imageClickHandler} renderView={this.renderView} images={imagesStartingAtClicked} />
         );
       default:
         return null;

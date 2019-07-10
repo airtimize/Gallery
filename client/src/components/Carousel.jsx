@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from './Image';
+import CloseButton from './CloseButton';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -10,15 +12,23 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { images } = this.props;
+    const { images, imageClickHandler, renderView } = this.props;
     return (
       <>
-        <div className="carousel-main-image"><img alt="" src={images[0].ImageUrl}/></div>
+        <CloseButton renderView={renderView} />
+        <div className="carousel-main-image"><img alt="" src={images[0].ImageUrl} /></div>
         <div className="carousel-image-list">
           { images.map((image) => {
+            const { ImageID, ImageUrl, Caption, Verified } = image;
             return (
               <div>
-                <img alt="" src={image.ImageUrl} />
+                <Image
+                  imageClickHandler={imageClickHandler}
+                  caption={Caption}
+                  ImageID={ImageID}
+                  ImageUrl={ImageUrl}
+                  Verified={Verified}
+                />
               </div>
             );
           })}
