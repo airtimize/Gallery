@@ -65,13 +65,13 @@ img {
 }
 
 .close-x {
-  stroke: black;
+  stroke: white;
   fill: transparent;
   stroke-linecap: round;
   stroke-width: 2;
 }
 
-button {
+#carousel-exit-button button {
   width: 50px;
   height: 50px;
   padding: 0;
@@ -79,8 +79,47 @@ button {
   border: 0px solid black;
 }
 
+#carousel-main-below {
+  display: table;
+}
+
 #carousel-exit-button {
   position: absolute !important;
   right: 0px !important;
   top: 0px !important;
+}
+
+#carousel-caption-verified {
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+}
+
+#carousel-main-caption {
+  color: white;
+}
+
+#carousel-main-verified {
+  color: #747474;
+  font-style: italic;
+}
+
+#toggle-photo {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+#toggle-photo-button {
+  color: white;
+  background-color: transparent;
+  font: 11px;
+  border: 0px;
+}
+
+.gallery-image-hover {
+  opacity: .7;
 }
