@@ -1,5 +1,5 @@
 body {
-  background-color: bisque;
+  background-color: #262626;
 }
 
 img {
@@ -10,6 +10,7 @@ img {
 .gallery-container-1 {
   display: flex;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .gallery-container-2 {
@@ -19,73 +20,31 @@ img {
   max-width: 100%;
 }
 
-/* .gallery-container-2 img {
-  width: auto;
-  max-width: 300px;
-  height: auto;
-  overflow: hidden;
-} */
-
 .gallery-container-2 div {
-  height: 210px;
-  width: 330px;
+  height: 218px;
+  width: 383px;
   overflow: hidden;
 }
 
 #gallery-big-image {
-  /* height: 720px;
-  width: 1080px; */
   overflow: hidden;
-  flex: 1 1 60em;
+  flex: 1 1 80em;
 }
-
-#gallery-image-0 {
-  height: 210px;
-  width: 330px;
-  overflow: hidden;
-}
-
-/* #gallery-image-1 {
-  height: 210px;
-  width: 330px;
-  overflow: hidden;
-  flex: 2 2 20em;
-}
-
-#gallery-image-2 {
-  height: 210px;
-  width: 330px;
-  overflow: hidden;
-  flex: 2 2 20em;
-}
-
-#gallery-image-3 {
-  height: 210px;
-  width: 330px;
-  overflow: hidden;
-  flex: 2 2 20em;
-}
-
-#gallery-image-4 {
-  height: 210px;
-  width: 330px;
-  overflow: hidden;
-  flex: 2 2 20em;
-} */
-
-/* .gallery-container-2 div {
-  max-height: 100%;
-  height: 210px;
-} */
 
 .gallery-image:hover {
   transition: all .3s ease-in-out;
   transform: scale(1.1);
 }
 
+.carousel-container {
+  display: flex;
+  justify-content: center;
+}
+
 .carousel-main-image {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .carousel-main-image img {
