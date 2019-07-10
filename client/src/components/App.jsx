@@ -21,10 +21,9 @@ class App extends React.Component {
     this.getData();
   }
 
-
   getData() {
-    //const listing = window.location.href.split('/')[4];
-    axios.get('/api/2/images')
+    const listing = window.location.href.split('/')[4];
+    axios.get(`/api/${listing}/images`)
       .then((response) => {
         this.setState({ images: response.data });
       })
@@ -34,7 +33,6 @@ class App extends React.Component {
   }
 
   imageClickHandler(imageID) {
-    //set view to carousel at clicked image start;
     this.setState({ carouselStart: imageID });
     this.renderView('carousel');
   }

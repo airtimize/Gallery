@@ -16,7 +16,12 @@ class Carousel extends React.Component {
     return (
       <>
         <CloseButton renderView={renderView} />
-        <div className="carousel-main-image"><img alt="" src={images[0].ImageUrl} /></div>
+        <div className="carousel-container">
+          <div className="carousel-main-image">
+            <img alt="" src={images[0].ImageUrl} />
+            {images[0].Caption}
+          </div>
+        </div>
         <div className="carousel-image-list">
           { images.map((image) => {
             const { ImageID, ImageUrl, Caption, Verified } = image;
