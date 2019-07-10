@@ -15,6 +15,8 @@ class App extends React.Component {
     this.getData = this.getData.bind(this);
     this.renderView = this.renderView.bind(this);
     this.imageClickHandler = this.imageClickHandler.bind(this);
+    this.imageHoverHandler = this.imageHoverHandler.bind(this);
+    this.imageUnHoverHandler = this.imageUnHoverHandler.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +39,28 @@ class App extends React.Component {
     this.renderView('carousel');
   }
 
+  imageHoverHandler(imageID) {
+    const { view, images } = this.state;
+    if (view === 'gallery') {
+      for (let i = 0; i < images.length; i++) {
+        if (images[i].ImageID !== imageID) {
+          images[i].hoverClass = 'gallery-image-hover';
+        }
+      }
+      this.setState({ images });
+    }
+  }
+
+  imageUnHoverHandler() {
+    const { view, images } = this.state;
+    if (view === 'gallery') {
+      for (let i = 0; i < images.length; i++) {
+        images[i].hoverClass = '';
+      }
+    }
+    this.setState({ images });
+  }
+
   renderView(option) {
     this.setState({ view: option });
   }
@@ -48,9 +72,9 @@ class App extends React.Component {
         return (
           <>
             <div className="gallery-container-1">
-              <Gallery imageClickHandler={this.imageClickHandler} id="gallery-big-image" images={images.slice(0, 1)} />
+              <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} id="gallery-big-image" images={images.slice(0, 1)} />
               <div className="gallery-container-2">
-                <Gallery imageClickHandler={this.imageClickHandler} images={images.slice(1)} />
+                <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} images={images.slice(1)} />
               </div>
             </div>
           </>
