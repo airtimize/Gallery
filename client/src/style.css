@@ -36,6 +36,14 @@ img {
   transform: scale(1.1);
 }
 
+.gallery-image {
+  transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+    transition-property: -ms-transform, -webkit-transform, transform, opacity !important;
+    transition-duration: 450ms, 450ms, 450ms, 450ms !important;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+    transition-delay: 0s, 0s, 0s, 0s !important;
+}
+
 .carousel-container {
   display: flex;
   justify-content: center;
