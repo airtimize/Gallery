@@ -9,6 +9,29 @@ class Carousel extends React.Component {
     this.state = {
       hidePhotoList: false
     };
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress(e) {
+    const { images, imageClickHandler } = this.props;
+    const prevPhoto = images[images.length-1].ImageID;
+    const nextPhoto = images[1].ImageID;
+    if (e.key === 'ArrowLeft') {
+      imageClickHandler(prevPhoto);
+    }
+    if (e.key === 'ArrowRight') {
+      imageClickHandler(nextPhoto);
+    }
   }
 
   render() {
