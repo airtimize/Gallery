@@ -57,7 +57,9 @@ describe('Gallery rendering', () => {
 
   it('should render a max of 4 Image components', () => {
     expect(wrapper.find(Image)).toHaveLength(4);
-  })
+  });
+});
 
+describe('Carousel rendering', () => {
 
-})
+});
