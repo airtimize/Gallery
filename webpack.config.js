@@ -15,8 +15,19 @@ module.exports = {
         },
       },
       {
-        test: [/\.css$/],
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/,
+        loader: 'style-loader',
+      }, {
+        test: /\.css$/,
+        loader: 'css-loader',
+        options: {
+          modules: {
+            mode: 'local',
+            localIdentName: '[name]__[local]___[hash:base64:5]',
+          },
+          import: true,
+          importLoaders: true,
+        },
       },
     ],
   },
@@ -28,3 +39,4 @@ module.exports = {
     path: path.join(__dirname, '/public/dist'),
   },
 };
+
