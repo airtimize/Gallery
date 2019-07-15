@@ -7,36 +7,36 @@ img {
   width: 100%;
 }
 
-.gallery-container-1 {
+.galleryContainer1 {
   display: flex;
   box-sizing: border-box;
   margin: 0 auto;
 }
 
-.gallery-container-2 {
+.galleryContainer2 {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
   max-width: 100%;
 }
 
-.gallery-container-2 div {
+.galleryContainer2 div {
   height: 218px;
   width: 383px;
   overflow: hidden;
 }
 
-#gallery-big-image {
+#galleryBigImage {
   overflow: hidden;
   flex: 1 1 80em;
 }
 
-.gallery-image:hover {
+.galleryImage:hover {
   transition: all .3s ease-in-out;
   transform: scale(1.1);
 }
 
-.gallery-image {
+.galleryImage {
   transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
     transition-property: -ms-transform, -webkit-transform, transform, opacity !important;
     transition-duration: 450ms, 450ms, 450ms, 450ms !important;
@@ -44,55 +44,55 @@ img {
     transition-delay: 0s, 0s, 0s, 0s !important;
 }
 
-.carousel-container {
+.carouselContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 550px;
 }
 
-.carousel-main-image {
+.carouselMainImage {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.carousel-main-image img {
+.carouselMainImage img {
   width: auto;
   max-width: 600px;
   height: auto;
 }
 
-.carousel-image-list {
+.carouselImageList {
   display: flex;
   justify-content: center;
 }
 
-.carousel-image-list div {
+.carouselImageList div {
   height: 100px;
   width: 100px;
   overflow: hidden;
 }
 
-.carousel-caption-drop {
+.carouselCaptionDrop {
   /* padding-top: 40px; */
   transform: translateY(67px);
       transition: -ms-transform 0.2s ease-out 0s, -webkit-transform 0.2s ease-out 0s, transform 0.2s ease-out 0s !important;
 }
 
-.carousel-caption-up {
+.carouselCaptionUp {
     transform: translateY(0px);
       transition: -ms-transform 0.2s ease-out 0s, -webkit-transform 0.2s ease-out 0s, transform 0.2s ease-out 0s !important;
 }
 
-.close-x {
+.closeX {
   stroke: white;
   fill: transparent;
   stroke-linecap: round;
   stroke-width: 2;
 }
 
-#carousel-exit-button button {
+#carouselExitButton button {
   width: 50px;
   height: 50px;
   padding: 0;
@@ -100,42 +100,42 @@ img {
   border: 0px solid black;
 }
 
-#carousel-main-below {
+#carouselMainBelow {
   width: 600px;
   padding-left: 408px;
 }
 
-#carousel-row {
+#carouselRow {
   display: table-row;
 }
 
-#carousel-exit-button {
+#carouselExitButton {
   position: absolute !important;
   right: 0px !important;
   top: 0px !important;
 }
 
-#carousel-caption-verified {
+#carouselCaptionVerified {
   display: table-cell;
   text-align: left;
   vertical-align: middle;
   width: 300px;
 }
 
-#carousel-main-caption {
+#carouselMainCaption {
   display: table-cell;
   color: white;
   text-align: left;
 }
 
-#carousel-main-verified {
+#carouselMainVerified {
   color: #747474;
   font-style: italic;
   display: table-row;
   text-align: left;
 }
 
-#toggle-photo {
+#togglePhoto {
   display: table-cell;
   text-align: right;
   vertical-align: middle;
@@ -145,13 +145,13 @@ img {
   width: 300px;
 }
 
-#toggle-photo-button {
+#togglePhotoButton {
   color: white;
   background-color: transparent;
   font: 11px;
   border: 0px;
 }
 
-.gallery-image-hover {
+.galleryImageHover {
   opacity: .7;
 }

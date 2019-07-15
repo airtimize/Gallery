@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Gallery from './Gallery';
 import Carousel from './Carousel';
+import style from '../style.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class App extends React.Component {
     if (view === 'gallery') {
       for (let i = 0; i < images.length; i++) {
         if (images[i].ImageID !== imageID) {
-          images[i].hoverClass = 'gallery-image-hover';
+          images[i].hoverClass = style.galleryImageHover;
         }
       }
       this.setState({ images });
@@ -71,9 +72,9 @@ class App extends React.Component {
       case 'gallery':
         return (
           <>
-            <div className="gallery-container-1">
-              <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} id="gallery-big-image" images={images.slice(0, 1)} />
-              <div className="gallery-container-2">
+            <div className={style.galleryContainer1}>
+              <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} id={style.galleryBigImage} images={images.slice(0, 1)} />
+              <div className={style.galleryContainer2}>
                 <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} images={images.slice(1)} />
               </div>
             </div>

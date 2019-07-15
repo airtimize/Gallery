@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from './Image';
 import CloseButton from './CloseButton';
+import style from '../style.css';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -39,9 +40,9 @@ class Carousel extends React.Component {
     return (
       <>
         <CloseButton renderView={renderView} />
-        <div className="carousel-container">
+        <div className={style.carouselContainer}>
           <div onClick={()=> imageClickHandler(prevPhoto)}><svg viewBox="0 0 18 18" width="4.8em" height="4.8em" fill="rgb(255, 255, 255)"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd" /></svg></div>
-          <div className="carousel-main-image">
+          <div className={style.carouselMainImage}>
             <img alt="" src={images[0].ImageUrl} />
           </div>
           <div onClick={()=> imageClickHandler(nextPhoto)}>
@@ -50,13 +51,13 @@ class Carousel extends React.Component {
             </svg>
           </div>
         </div>
-        <div id="carousel-main-below" className={hidePhotoList ? 'carousel-caption-drop' : 'carousel-caption-up'}>
-          <div id="carousel-row">
-            <div id="carousel-caption-verified">
-              <div id="carousel-main-caption">{images[0].Caption}</div>
+        <div id={style.carouselMainBelow} className={hidePhotoList ? style.carouselCaptionDrop : style.carouselCaptionUp}>
+          <div id={style.carouselRow}>
+            <div id={style.carouselCaptionVerified}>
+              <div id={style.carouselMainCaption}>{images[0].Caption}</div>
             </div>
-            <div id="toggle-photo">
-              <button onClick={() => this.setState({ hidePhotoList: !hidePhotoList })} type="button" id="toggle-photo-button">
+            <div id={style.togglePhoto}>
+              <button onClick={() => this.setState({ hidePhotoList: !hidePhotoList })} type="button" id={style.togglePhotoButton}>
                 { (hidePhotoList === false)
                   ? (
                     <span>
@@ -77,12 +78,12 @@ class Carousel extends React.Component {
               </button>
             </div>
           </div>
-              <div id="carousel-main-verified">
+              <div id={style.carouselMainVerified}>
                 {(images[0].Verified) === 1 ? 'Verified Photo' : null }
               </div>
           {(hidePhotoList) === false
             ? (
-              <div className="carousel-image-list">
+              <div className={style.carouselImageList}>
                 { images.map((image) => {
                   const {
                     ImageID, ImageUrl, Caption, Verified,
