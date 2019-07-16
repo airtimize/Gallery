@@ -8,7 +8,7 @@ const port = process.env.PORT || 3003;
 
 const db = require('../database/index.js');
 
-app.use('/rooms', express.static(path.join(__dirname, '../public')));
+app.use('/rooms/:listingid', express.static(path.join(__dirname, '../public')));
 
 app.get('/api/:listingid/images', controllers.getImages);
 
