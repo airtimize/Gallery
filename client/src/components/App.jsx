@@ -72,10 +72,12 @@ class App extends React.Component {
       case 'gallery':
         return (
           <>
-            <div className={style.galleryContainer1}>
-              <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} id={style.galleryBigImage} images={images.slice(0, 1)} />
-              <div className={style.galleryContainer2}>
-                <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} images={images.slice(1)} />
+            <div className={style.galleryBody}>
+              <div className={style.galleryContainer1}>
+                <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} id={style.galleryBigImage} images={images.slice(0, 1)} />
+                <div className={style.galleryContainer2}>
+                  <Gallery imageClickHandler={this.imageClickHandler} imageHoverHandler={this.imageHoverHandler} imageUnHoverHandler={this.imageUnHoverHandler} images={images.slice(1)} />
+                </div>
               </div>
             </div>
           </>
@@ -88,7 +90,9 @@ class App extends React.Component {
         }
         const imagesStartingAtClicked = images.slice(startID).concat(images.slice(0,startID));
         return (
-          <Carousel imageClickHandler={this.imageClickHandler} renderView={this.renderView} images={imagesStartingAtClicked} />
+          <div className={style.galleryCarouselBody}>
+            <Carousel imageClickHandler={this.imageClickHandler} renderView={this.renderView} images={imagesStartingAtClicked} />
+          </div>
         );
       default:
         return null;
