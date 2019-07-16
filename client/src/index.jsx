@@ -5,5 +5,5 @@ import './style.css';
 
 
 ReactDOM.render(
-  <App />, document.getElementById('root'),
+  <App />, document.getElementById('rootGallery'),
 );
