@@ -84,11 +84,11 @@ class Carousel extends React.Component {
           {(hidePhotoList) === false
             ? (
               <div className={style.carouselImageList}>
-                { images.map((image) => {
+                { images.map((image, index) => {
                   const {
                     ImageID, ImageUrl, Caption, Verified,
                   } = image;
-                  return (
+                  return (index < 6) ? (
                     <div>
                       <Image
                         imageClickHandler={imageClickHandler}
@@ -98,7 +98,7 @@ class Carousel extends React.Component {
                         Verified={Verified}
                       />
                     </div>
-                  );
+                  ) : null;
                 })}
               </div>
             ) : null}
