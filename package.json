@@ -11,7 +11,9 @@
     "test": "jest",
     "build": "webpack -d --watch",
     "seed": "node ./database/seed.js",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js",
+    "db": "mysql -h 172.17.0.3 -uroot < ./database/schema.sql",
+    "docker:start": "npm start"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -23,24 +25,5 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "request": "^2.88.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.2",
-    "jest": "^24.8.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5"
   }
 }

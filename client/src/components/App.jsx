@@ -26,7 +26,7 @@ class App extends React.Component {
 
   getData() {
     const listing = window.location.href.split('/')[4];
-    axios.get(`http://localhost:3003/api/${listing}/images`)
+    axios.get(`/api/${listing}/images`)
       .then((response) => {
         this.setState({ images: response.data });
       })
