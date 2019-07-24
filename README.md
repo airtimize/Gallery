@@ -25,6 +25,15 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - Node 6.13.0
 - etc
 
+## API Reference
+
+| HTTP Method   | Endpoint                           | Description                                                   |
+|:--------------|:-----------------------------------|:--------------------------------------------------------------|
+| POST          | /api/:listingId/images             | Add a new image for a listing                                 |
+| GET           | /api/:listingId/images             | Get all images for a listing                                  |
+| PUT           | /api/:listingId/images/            | Update an image for a listing                                 |
+| DELETE        | /api/:listingId/images/            | Delete an image from a listing                                |
+
 ## Development
 
 ### Installing Dependencies
