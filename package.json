@@ -13,7 +13,8 @@
     "seed": "node ./database/seed.js",
     "start": "node server/index.js",
     "db": "mysql -h 172.17.0.3 -uroot < ./database/schema.sql",
-    "docker:start": "npm run seed && npm start"
+    "docker:start": "npm run seed && npm start",
+    "server": "nodemon server/index.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -24,6 +25,18 @@
     "nodemon": "^1.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "webpack": "^4.37.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "webpack-cli": "^3.3.6"
   }
 }
