@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 const express = require('express');
 const cors = require('cors');
-const controllers = require('./controllers/index');
 const path = require('path');
+const controllers = require('./controllers/index');
 
 const app = express();
 const port = process.env.PORT || 3012;
 
-const db = require('../database/index.js');
+require('../database/index.js');
 
 app.use('/rooms/:listingid', express.static(path.join(__dirname, '../public')));
 
@@ -17,8 +17,6 @@ app.post('/api/:listingid/images',);
 
 app.put('/api/:listingid/images',);
 
-app.delete('/api/:listingid/images',);
-
-
+app.delete('/api/:listingid/images');
 
 app.listen(port, () => { console.log(`Listening on port ${port}`); });
