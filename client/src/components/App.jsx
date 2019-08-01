@@ -13,6 +13,7 @@ class App extends React.Component {
       carouselStart: 1,
     };
 
+
     this.getData = this.getData.bind(this);
     this.renderView = this.renderView.bind(this);
     this.imageClickHandler = this.imageClickHandler.bind(this);
@@ -25,12 +26,12 @@ class App extends React.Component {
   }
 
   getData() {
-    const listing = window.location.href.split('/')[4];
-    axios.get(`/api/${listing}/images`)
-      .then((response) => {
-        this.setState({ images: response.data });
+    const listing = window.location.href.split('/')[4]; // this should get a listing id. I would like to console log this, but i'm not sure how to do that in this file.
+    axios.get(`/api/${listing}/images`) // axios get request
+      .then((response) => { // if successful do thi func with the response as the argument
+        this.setState({ images: response.data }); // set images to response data. I would also like to console.log this... again I'm not sure how in this file.
       })
-      .catch((err) => {
+      .catch((err) => { // if there is an err, console.log err
         console.log(err);
       });
   }
