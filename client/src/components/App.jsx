@@ -8,7 +8,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [],
+      images: [
+        // {
+        //   listing_id: 11,
+        //   image_id: 34,
+        //   ImageUrl: 'https://sdcimages0001.s3-us-west-1.amazonaws.com/images2/databaseimg598.jpg',
+        //   caption: 'suscipit qui tempore',
+        //   verified: 1,
+        // },
+      ],
       view: 'gallery',
       carouselStart: 1,
     };
@@ -21,13 +29,20 @@ class App extends React.Component {
     this.imageUnHoverHandler = this.imageUnHoverHandler.bind(this);
   }
 
+
   componentDidMount() {
-    this.getData();
+    if (this.state.images.length === 0) {
+      this.getData();
+    }
   }
 
   getData() {
-    const listing = window.location.href.split('/')[4]; // this should get a listing id. I would like to console log this, but i'm not sure how to do that in this file.
+    const listing = window.location.href.split('/')[3]; // this should get a listing id. I would like to console log this, but i'm not sure how to do that in this file. When I test in the consol I get "d".
+
     axios.get(`/api/${listing}/images`) // axios get request
+
+      // axios.get(`/api/${12345}/images`) // axios get request // this will get the image info for listing 12345
+
       .then((response) => { // if successful do thi func with the response as the argument
         this.setState({ images: response.data }); // set images to response data. I would also like to console.log this... again I'm not sure how in this file.
       })
@@ -69,6 +84,7 @@ class App extends React.Component {
 
   render() {
     const { images, view, carouselStart } = this.state;
+    console.log(images.slice(0, 1))
     switch (view) {
       case 'gallery':
         return (
@@ -89,7 +105,7 @@ class App extends React.Component {
             var startID = i;
           }
         }
-        const imagesStartingAtClicked = images.slice(startID).concat(images.slice(0,startID));
+        const imagesStartingAtClicked = images.slice(startID).concat(images.slice(0, startID));
         return (
           <div className={style.galleryCarouselBody}>
             <Carousel imageClickHandler={this.imageClickHandler} renderView={this.renderView} images={imagesStartingAtClicked} />
