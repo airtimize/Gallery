@@ -1,3 +1,10 @@
+## SDC
+to generate data run: npm run SdcGenData
+
+
+
+
+
 # Bedroost Gallery Module
 
 > Project description
