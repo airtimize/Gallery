@@ -50,13 +50,8 @@ pool.connect((err, client, done) => {
   // adds rows to the db - v this works
 
   myClient = client;
-  // const insertImgInfo ="copy images(listing_id, ImageID , ImageUrl, Caption, Verified) from" + "'" + path.join(__dirname, "/no_Image_ID.csv")  + "'" + "DELIMITER ',' CSV HEADER;"
 
-    // const insertImgInfo ="copy images(listing_id," + '"' + "ImageID" + '"' + ", ImageUrl, Caption, Verified) from" + "'" + path.join(__dirname, "/no_Image_ID.csv")  + "'" + "DELIMITER ',' CSV HEADER;"
-
-    // const insertImgInfo ="copy images(listing_id," + '"ImageID"'+ ", ImageUrl, Caption, Verified) from" + "'" + path.join(__dirname, "/no_Image_ID.csv")  + "'" + "DELIMITER ',' CSV HEADER;"
-
-    const insertImgInfo ="copy images(listing_id," + '"ImageID", "ImageUrl", "Caption", "Verified"' + ") from" + "'" + path.join(__dirname, "/no_Image_ID.csv")  + "'" + "DELIMITER ',' CSV HEADER;"
+  const insertImgInfo ="copy images(listing_id," + '"ImageID", "ImageUrl", "Caption", "Verified"' + ") from" + "'" + path.join(__dirname, "/no_Image_ID.csv")  + "'" + "DELIMITER ',' CSV HEADER;"
 
 
   myClient.query(insertImgInfo, (err, result) => {
