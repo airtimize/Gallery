@@ -19,4 +19,4 @@ app.put('/api/:listingid/images',);
 
 app.delete('/api/:listingid/images');
 
-app.listen(port, () => { console.log(`Listening on port ${port}`); });
+app.listen(port, () => { console.log(`Listening on FEC port ${port}`); });
