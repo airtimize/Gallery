@@ -77,4 +77,6 @@ pool.connect((err, client, done) => {
 
 // copy images(listing_id, ImageUrl, Caption, Verified) from" + "'" + path.join(__dirname, "/no_Image_ID.csv")  + "'" + "DELIMITER ',' CSV HEADER;"
 
+//aug 7th commit
+
 
