@@ -3,10 +3,12 @@ const Pool = require('pg').Pool;
 const PGUSER = 'chad';
 const PGDATABASE = 'sdc';
 const url = 'ec2-54-183-55-167.us-west-1.compute.amazonaws.com'
+const password = 'pa$$word';
 
 const config = { // this is connected to the ec2 database
   user: PGUSER, // name of the user account
   PGHOST: url,
+  PGPASSWORD: password,
   database: PGDATABASE, // name of the database
   PGPORT: 5432,
   max: 10, // max number of clients in the pool
