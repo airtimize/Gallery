@@ -2,13 +2,23 @@ const Pool = require('pg').Pool;
 
 const PGUSER = 'chad';
 const PGDATABASE = 'sdc';
+const url = 'ec2-54-183-55-167.us-west-1.compute.amazonaws.com'
 
-const config = {
+const config = { // this is connected to the ec2 database
   user: PGUSER, // name of the user account
+  PGHOST: url,
   database: PGDATABASE, // name of the database
+  PGPORT: 5432,
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
+
+// const config = { // this works locally
+//   user: PGUSER, // name of the user account
+//   database: PGDATABASE, // name of the database
+//   max: 10, // max number of clients in the pool
+//   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+// };
 
 const pool = new Pool(config);
 const getData = (req, res) => {
