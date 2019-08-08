@@ -2,7 +2,9 @@ const Pool = require('pg').Pool;
 
 const PGUSER = 'chad';
 const PGDATABASE = 'sdc';
-const url = 'ec2-54-183-55-167.us-west-1.compute.amazonaws.com'
+// const url = 'ec2-54-183-55-167.us-west-1.compute.amazonaws.com'
+const url = 'ec2-54-183-164-125.us-west-1.compute.amazonaws.com';
+
 const password = 'pa$$word';
 
 const config = { // this is connected to the ec2 database
