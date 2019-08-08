@@ -1,28 +1,11 @@
 const Pool = require('pg').Pool;
 
-const PGUSER = 'chad';
-const PGDATABASE = 'sdc';
-// const url = 'ec2-54-183-55-167.us-west-1.compute.amazonaws.com'
-const url = 'ec2-54-183-164-125.us-west-1.compute.amazonaws.com';
-
-const password = 'pa$$word';
-
-const config = { // this is connected to the ec2 database
-  user: PGUSER, // name of the user account
-  PGHOST: url,
-  PGPASSWORD: password,
-  database: PGDATABASE, // name of the database
-  PGPORT: 5432,
-  max: 10, // max number of clients in the pool
-  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+const config = {
+  user: 'power_user',
+  password: 'Monibu',
+  host: '54.183.164.125',
+  database: 'sdc',
 };
-
-// const config = { // this works locally
-//   user: PGUSER, // name of the user account
-//   database: PGDATABASE, // name of the database
-//   max: 10, // max number of clients in the pool
-//   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
-// };
 
 const pool = new Pool(config);
 const getData = (req, res) => {
@@ -66,4 +49,6 @@ const updatePhoto = (req, res) => {
     })
 };
 
-module.exports = { getData, deletePhoto, addPhoto, updatePhoto };
+module.exports = {
+  getData, deletePhoto, addPhoto, updatePhoto,
+};
