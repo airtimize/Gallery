@@ -24,7 +24,7 @@ const getData = (req, res) => {
 const deletePhoto = (req, res) => {
   const queryStr = `delete from images where "ImageID" = ${req.params.listingid};`;
 
-  pool.query(queryStr, (err, success) => {
+  pool.query(queryStr, (err) => {
     if (err) {
       console.log(err);
       res.status(500).end();
@@ -36,14 +36,14 @@ const deletePhoto = (req, res) => {
 const addPhoto = (req, res) => {
   // const query = `
   //   INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
-  //     VALUES (${req.params.listing_id}, ${req.params.ImageID}, www.google2.com, ${req.params.Caption}, ${req.params.Verified});
+  //     VALUES (${req.params.listing_id}, ${req.params.ImageID}, 'www.google2.com', ${req.params.Caption}, ${req.params.Verified});
   // `;
 
-  const query = `
-  INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
-    VALUES (${req.params.listing_id}, 1, www.google2.com, 'great place', 1);
-`;
-  pool.query(query, (err) => {
+//   const query = `
+//   INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
+//     VALUES (0, 1, 'www.google3.com', 'great place3', 3);
+// `;
+  pool.query(`INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (0, 1, 'www.google3.com', 'great place3', 3);`, (err) => {
     if (err) {
       console.log(err);
       res.status(500).end();
