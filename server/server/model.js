@@ -34,13 +34,19 @@ const deletePhoto = (req, res) => {
 };
 
 const addPhoto = (req, res) => {
+  // const query = `
+  //   INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
+  //     VALUES (${req.params.listing_id}, ${req.params.ImageID}, www.google2.com, ${req.params.Caption}, ${req.params.Verified});
+  // `;
+
   const query = `
-    INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
-      VALUES (${req.params.listing_id}, ${req.params.ImageID}, www.google2.com, ${req.params.Caption}, ${req.params.Verified});
-  `;
+  INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
+    VALUES (${req.params.listing_id}, 1, www.google2.com, 'great place', 1);
+`;
   pool.query(query, (err) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.status(500).end();
     }
     res.status(200).send('row added');
   });
