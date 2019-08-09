@@ -4,7 +4,7 @@ const { performance } = require('perf_hooks');
 
 // const writeUsers = fs.createWriteStream('no_ImageID.csv'); // names the file to write to
 
-const writeUsers = fs.createWriteStream('./SDC_DB/no_Image_ID.csv'); // names the file to write to
+const writeUsers = fs.createWriteStream('./server/no_Image_ID.csv'); // names the file to write to
 
 writeUsers.write('listing_id, ImageID, ImageUrl, Caption, Verified\n', 'utf8'); // creates column clables and encodes // doesn't have ImageID
 
