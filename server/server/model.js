@@ -39,7 +39,7 @@ const addPhoto = (req, res) => {
   //     VALUES (${req.params.listing_id}, ${req.params.ImageID}, 'www.google2.com', ${req.params.Caption}, ${req.params.Verified});
   // `;
 
-  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (0, 1, 'www.google3.com', 'great place3', 3);`
+  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${listing_id}, 1, 'www.google3.com', 'great place3', 3);`
 
   pool.query(queryStr, (err) => {
     if (err) {
