@@ -34,7 +34,7 @@ const deletePhoto = (req, res) => {
 };
 
 const addPhoto = (req, res) => {
-  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.params.ImageID}, 'www.google3.com', ${req.params.Caption}, ${req.params.Verified});`;
+  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.params.ImageID}, 'www.google3.com', ${req.params.Caption}, 4);`;
 
   pool.query(queryStr, (err) => {
     if (err) {
