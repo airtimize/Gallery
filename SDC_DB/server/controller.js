@@ -15,7 +15,8 @@ app.use('/:listingid', express.static(path.resolve(__dirname, '..', '..', 'publi
 app.get('/api/:listingid/images', cors(), db.getData);
 
 // make sure to change the img to delete in the model.js
-app.delete('/', db.deletePhoto);
+// app.delete('/', db.deletePhoto);
+app.delete('/api/:listingid/images', cors(), (req, res) => res.send('deleted'));
 app.post('/', db.addPhoto);
 app.put('/', db.updatePhoto);
 
