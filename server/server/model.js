@@ -1,7 +1,10 @@
 const Pool = require('pg').Pool;
 const redis = require("redis"),
-
 client = redis.createClient();
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
+
+
 
 const config = {
   user: 'power_user',
@@ -18,16 +21,33 @@ client.set("string key", "string val", redis.print);
 client.hset("hash key", "hashtest 1", "some value", redis.print);
 client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
 client.hkeys("hash key", function (err, replies) {
-    console.log(replies.length + " replies:");
-    replies.forEach(function (reply, i) {
-        console.log("    " + i + ": " + reply);
-    });
-    client.quit();
+  console.log(replies.length + " replies:");
+  replies.forEach(function (reply, i) {
+      console.log("    " + i + ": " + reply);
+  });
+  client.quit();
 });
 
 const pool = new Pool(config);
 const getData = (req, res) => {
   const queryStr = `SELECT * FROM images WHERE listing_id = ${req.params.listingid};`;
+
+  return client.getAsync(req.params.listingid).then(
+    res.status(200).json(success.rows);
+    console.log("success")
+  ).catch(
+    pool.query(queryStr, (err, success) => {
+      if (err) {
+        res.send(err);
+        return;
+      }
+      res.status(200).json(success.rows);
+      console.log("success")
+      client.set(req.params.listingid, success.rows);
+    });
+  )
+
+
 
   //used redis conncect to db
   // make a get request to the db to see if it has the info.
