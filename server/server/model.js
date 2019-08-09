@@ -1,4 +1,7 @@
 const Pool = require('pg').Pool;
+const redis = require("redis"),
+
+client = redis.createClient();
 
 const config = {
   user: 'power_user',
@@ -6,6 +9,10 @@ const config = {
   host: '54.183.164.125',
   database: 'sdc',
 };
+
+client.on('error', (err) => {
+  console.log('Error ' + err);
+});
 
 const pool = new Pool(config);
 const getData = (req, res) => {
