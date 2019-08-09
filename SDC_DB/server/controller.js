@@ -7,11 +7,10 @@ const app = express();
 const db = require('./model');
 
 const port = 4022;
+
+app.get('/loaderio-3e75fb58c8e89178bfa8a05ccbcecc3c.txt', (req, res) => res.sendFile(path.resolve(__dirname, '../../public/loaderio-3e75fb58c8e89178bfa8a05ccbcecc3c.txt')));
+
 app.use('/:listingid', express.static(path.resolve(__dirname, '..', '..', 'public')));
-app.use('loaderio-bf2975d3c6e30967cdecbee287c795ad/', express.static(path.resolve(__dirname, 'loaderio-bf2975d3c6e30967cdecbee287c795ad.txt')));
-
-
-// app.get('/api/:listingid', db.getData); // this works with postman //http://localhost:4022/api/123
 
 app.get('/api/:listingid/images', cors(), db.getData);
 
