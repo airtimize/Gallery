@@ -39,11 +39,9 @@ const addPhoto = (req, res) => {
   //     VALUES (${req.params.listing_id}, ${req.params.ImageID}, 'www.google2.com', ${req.params.Caption}, ${req.params.Verified});
   // `;
 
-//   const query = `
-//   INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
-//     VALUES (0, 1, 'www.google3.com', 'great place3', 3);
-// `;
-  pool.query(`INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (0, 1, 'www.google3.com', 'great place3', 3);`, (err) => {
+  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (0, 1, 'www.google3.com', 'great place3', 3);`
+
+  pool.query(queryStr, (err) => {
     if (err) {
       console.log(err);
       res.status(500).end();
