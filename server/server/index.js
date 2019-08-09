@@ -18,6 +18,9 @@ app.get('/api/:listingid/images', cors(), db.getData);
 // app.delete('/', db.deletePhoto);
 app.delete('/api/:listingid/images', cors(), db.deletePhoto);
 app.post('/', db.addPhoto);
-app.put('/', db.updatePhoto);
+
+
+
+app.put('/api/:ImageID/images', cors(), db.updateCaption);
 
 app.listen(port, () => console.log(`SDC listening on port ${port}!`));

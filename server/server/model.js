@@ -46,16 +46,24 @@ const addPhoto = (req, res) => {
   });
 };
 
-const updatePhoto = (req, res) => {
+const updateCaption = (req, res) => {
+  // const queryStr = "update images set caption = 'Not your average caption!!' where listing_id = 1";
 
-  pool.query( "update images set caption = 'Not your average caption!!' where listing_id = 1", (err, success) => {
+  // http://54.183.55.167:4022/api/123/images -- this should update the photo with ImageID 123 and update it's caption to 'Not your average caption!!'
+
+
+  const queryStr = `UPDATE images SET "Caption" = 'Not your average caption!!' WHERE "ImageID" = ${req.params.ImageID}`;
+
+
+  pool.query(queryStr, (err) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.status(500).end();
     }
-    res.status(200).send('row updated')
+    res.status(200).send('row updated');
   });
 };
 
 module.exports = {
-  getData, deletePhoto, addPhoto, updatePhoto,
+  getData, deletePhoto, addPhoto, updateCaption,
 };
