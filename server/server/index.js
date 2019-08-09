@@ -21,6 +21,6 @@ app.post('/', db.addPhoto);
 
 
 
-app.put('/api/:ImageID/images', cors(), db.updateCaption);
+app.put('/api/:ImageID/:Caption/images', cors(), db.updateCaption);
 
 app.listen(port, () => console.log(`SDC listening on port ${port}!`));

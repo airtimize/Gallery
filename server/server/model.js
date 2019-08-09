@@ -52,7 +52,7 @@ const updateCaption = (req, res) => {
   // http://54.183.55.167:4022/api/123/images -- this should update the photo with ImageID 123 and update it's caption to 'Not your average caption!!'
 
 
-  const queryStr = `UPDATE images SET "Caption" = 'Not your average caption!!' WHERE "ImageID" = ${req.params.ImageID}`;
+  const queryStr = `UPDATE images SET "Caption" = '${req.params.Caption}' WHERE "ImageID" = ${req.params.ImageID}`;
 
 
   pool.query(queryStr, (err) => {
