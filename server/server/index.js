@@ -16,7 +16,7 @@ app.get('/api/:listingid/images', cors(), db.getData);
 
 // make sure to change the img to delete in the model.js
 // app.delete('/', db.deletePhoto);
-app.delete('/api/:listingid/images', cors(), (req, res) => res.send('deleted'));
+app.delete('/api/:listingid/images', cors(), db.deletePhoto);
 app.post('/', db.addPhoto);
 app.put('/', db.updatePhoto);
 
