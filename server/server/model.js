@@ -11,6 +11,13 @@ const pool = new Pool(config);
 const getData = (req, res) => {
   const queryStr = `SELECT * FROM images WHERE listing_id = ${req.params.listingid};`;
 
+  //used redis conncect to db
+  // make a get request to the db to see if it has the info.
+    // if it does have the info then k=just send that back.
+    // else get the info from postgres, send that to redis and send that to the response
+
+  //redit client.set
+
   pool.query(queryStr, (err, success) => {
     if (err) {
       res.send(err);
