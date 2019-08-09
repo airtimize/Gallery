@@ -22,12 +22,12 @@ const getData = (req, res) => {
 };
 
 const deletePhoto = (req, res) => {
-    pool.query("delete from images where image_id = 3000005;", (err, success) => {
-        if(err){
-            throw err;
-        }
-        res.status(200).send("photo deleted")
-    })
+  pool.query('delete from images where "ImageID" = $1;', (err, success) => {
+    if (err) {
+      throw err;
+    }
+    res.status(200).send('photo deleted');
+  });
 };
 
 const addPhoto = (req, res) => {
