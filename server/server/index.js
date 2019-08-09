@@ -20,7 +20,7 @@ app.delete('/api/:listingid/images', cors(), db.deletePhoto);
 
 
 // app.post('/api/:listing_id/:ImageID/:Caption/:Verified/images', cors(), db.addPhoto);
-app.post('/api/:listingId/:ImageID/:Verified/images', cors(), db.addPhoto);
+app.post('/api/:listingId/:ImageID/:Caption/:Verified/images', cors(), db.addPhoto);
 
 app.put('/api/:ImageID/:Caption/images', cors(), db.updateCaption);
 
