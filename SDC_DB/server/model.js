@@ -22,7 +22,7 @@ const getData = (req, res) => {
 };
 
 const deletePhoto = (req, res) => {
-    pool.query("delete from testv1 where image_id = 3000005;", (err, success) => {
+    pool.query("delete from images where image_id = 3000005;", (err, success) => {
         if(err){
             throw err;
         }
@@ -41,7 +41,7 @@ const addPhoto = (req, res) => {
 
 const updatePhoto = (req, res) => {
 
-    pool.query( "update testv1 set caption = 'Not your average caption!!' where listing_id = 1", (err, success) => {
+    pool.query( "update images set caption = 'Not your average caption!!' where listing_id = 1", (err, success) => {
         if(err){
             throw err;
         }
