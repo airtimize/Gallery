@@ -34,12 +34,14 @@ const deletePhoto = (req, res) => {
 };
 
 const addPhoto = (req, res) => {
-  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.params.ImageID}, 'www.google4.com', ${req.params.Caption}, ${req.params.Verified});`;
+  console.log(req.params.Cap)
+
+  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.params.ImageID}, '${req.params.url}', '${req.params.Cap}', ${req.params.Verified});`;
 
   pool.query(queryStr, (err) => {
     if (err) {
       console.log(err);
-      res.status(500).end();
+      res.status(404).end();
     }
     res.status(200).send('row added');
   });
