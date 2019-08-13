@@ -29,11 +29,11 @@ const getData = (req, res) => {
 };
 
 const deletePhoto = (req, res) => {
-  const queryStr = `delete from images where "ImageID" = ${req.params.listingid};`;
+  const queryStr = `delete from images where "ImageID" = ${req.params.imageId};`;
 
   pool.query(queryStr, (err) => {
     if (err) {
-      console.log(err);
+      console.log("oh boy");
       res.status(500).end();
     }
     res.status(200).send('photo deleted');
@@ -41,9 +41,7 @@ const deletePhoto = (req, res) => {
 };
 
 const addPhoto = (req, res) => {
-  console.log(req.params.Cap)
-
-  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.params.ImageID}, '${req.params.url}', '${req.params.Cap}', ${req.params.Verified});`;
+  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.body.ImageID}, '${req.body.url}', '${req.body.Cap}', ${req.body.Verified});`;
 
   pool.query(queryStr, (err) => {
     if (err) {
@@ -55,13 +53,9 @@ const addPhoto = (req, res) => {
 };
 
 const updateCaption = (req, res) => {
-  // const queryStr = "update images set caption = 'Not your average caption!!' where listing_id = 1";
-
-  // http://54.183.55.167:4022/api/123/images -- this should update the photo with ImageID 123 and update it's caption to 'Not your average caption!!'
-
-
-  const queryStr = `UPDATE images SET "Caption" = '${req.params.Caption}' WHERE "ImageID" = ${req.params.ImageID}`;
-
+  const queryStr = `UPDATE images
+  SET "${req.body.itemToUpdate}" = '${req.body.update}'
+  WHERE "ImageID" = ${req.body.ImageID}`;
 
   pool.query(queryStr, (err) => {
     if (err) {

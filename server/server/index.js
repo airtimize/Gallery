@@ -2,9 +2,12 @@ require('newrelic');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
 const db = require('./model');
+
+app.use(bodyParser.json());
 
 const port = 4022;
 
@@ -12,16 +15,13 @@ app.get('/loaderio-3e75fb58c8e89178bfa8a05ccbcecc3c.txt', (req, res) => res.send
 
 app.use('/:listingid', express.static(path.resolve(__dirname, '..', '..', 'public')));
 
-app.get('/api/:listingid/images', cors(), db.getData);
+app.get('/api/listings/:listingid/images', cors(), db.getData);
 
-// make sure to change the img to delete in the model.js
-// app.delete('/', db.deletePhoto);
-app.delete('/api/:listingid/images', cors(), db.deletePhoto);
+app.delete('/api/images/:imageId', cors(), db.deletePhoto);
 
+app.post('/api/image/:imageId/images', cors(), db.addPhoto);
 
-// app.post('/api/:listing_id/:ImageID/:Caption/:Verified/images', cors(), db.addPhoto);
-app.post('/api/:listingId/:ImageID/:url/:Cap/:Verified/images', cors(), db.addPhoto);
+app.put('/api/listings', cors(), db.updateCaption);
 
-app.put('/api/:ImageID/:Caption/images', cors(), db.updateCaption);
 
 app.listen(port, () => console.log(`SDC listening on port ${port}!`));
