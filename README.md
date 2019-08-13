@@ -1,6 +1,17 @@
 ## SDC
 to generate data run: npm run SdcGenData
 
+in postman run localhost:4022 then the end points
+
+connect via aws:
+remove the space between the SDC and the gallery for the ssh connection
+
+Working off the redis branch of artimiz gallery.The last functioning branch before that was AUG7
+
+need to have 2 instances of the ec2 service up to work properly. One terminal running the server and one watching the webpack build. ALso need to have a redis terminal running. to launch redis redis-server
+
+Go to modles.js line 36 and 41. read comments. Thats where you left off
+
 
 
 
