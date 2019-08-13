@@ -33,7 +33,7 @@ const deletePhoto = (req, res) => {
 
   pool.query(queryStr, (err) => {
     if (err) {
-      console.log("oh boy");
+      console.log(err);
       res.status(500).end();
     }
     res.status(200).send('photo deleted');

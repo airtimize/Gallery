@@ -19,7 +19,7 @@ app.get('/api/listings/:listingid/images', cors(), db.getData);
 
 app.delete('/api/images/:imageId', cors(), db.deletePhoto);
 
-app.post('/api/image/:imageId/images', cors(), db.addPhoto);
+app.post('/api/listing/:listingId/image', cors(), db.addPhoto);
 
 app.put('/api/listings', cors(), db.updateCaption);
 
