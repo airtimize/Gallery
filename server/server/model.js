@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool;
-const redis = require("redis"),
-client = redis.createClient();
+const redis = require('redis');
+const bluebird = require('bluebird');
+
+const client = redis.createClient();
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
-
-
 
 const config = {
   user: 'power_user',
@@ -14,56 +14,57 @@ const config = {
 };
 
 client.on('error', (err) => {
-  console.log('Error ' + err);
+  console.log(`Error ${err}`);
 });
 
-client.set("string key", "string val", redis.print);
-client.hset("hash key", "hashtest 1", "some value", redis.print);
-client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
-client.hkeys("hash key", function (err, replies) {
-  console.log(replies.length + " replies:");
+client.set('string key', 'string val', redis.print);
+client.hset('hash key', 'hashtest 1', 'some value', redis.print);
+client.hset(['hash key', 'hashtest 2', 'some other value'], redis.print);
+client.hkeys('hash key', function (err, replies) {
+  console.log(replies.length + ' replies:');
   replies.forEach(function (reply, i) {
-      console.log("    " + i + ": " + reply);
+      console.log('    ' + i + ': ' + reply);
   });
-  client.quit();
+  // client.quit();
 });
 
 const pool = new Pool(config);
 const getData = (req, res) => {
   const queryStr = `SELECT * FROM images WHERE listing_id = ${req.params.listingid};`;
 
-  return client.getAsync(req.params.listingid).then(
-    res.status(200).json(success.rows);
-    console.log("success")
-  ).catch(
+  return client.getAsync(req.params.listingid).then((success) => {
+    res.status(200).json(success.rows);// need to figure out how to get this to send info back to the front end.
+
+    // console.log(success)
+    console.log('redis success2');
+
+    // CA: when an image is already in redis, it doesn't work. If an image is not in redis then it goes to the catch and find the image in postgres and add it to redis. To make it work for an image already in redit remove the err handling from catch. We need to figure out how to get the image data sent back to the client when the data is already in redis.
+  }).catch( (err) => {
     pool.query(queryStr, (err, success) => {
       if (err) {
         res.send(err);
         return;
       }
+
+      const key = JSON.stringify(req.params.listingid);
+      console.log('catch success');
+      // console.log(success.rows);
+      // console.log(req.params.listingid)
+      client.set(req.params.listingid, JSON.stringify(success.rows));
       res.status(200).json(success.rows);
-      console.log("success")
-      client.set(req.params.listingid, success.rows);
     });
-  )
 
+  }
+  );
 
-
-  //used redis conncect to db
-  // make a get request to the db to see if it has the info.
-    // if it does have the info then k=just send that back.
-    // else get the info from postgres, send that to redis and send that to the response
-
-  //redit client.set
-
-  pool.query(queryStr, (err, success) => {
-    if (err) {
-      res.send(err);
-      return;
-    }
-    res.status(200).json(success.rows);
-    console.log("success")
-  });
+  // pool.query(queryStr, (err, success) => {
+  //   if (err) {
+  //     res.send(err);
+  //     return;
+  //   }
+  //   res.status(200).json(success.rows);
+  //   console.log("success")
+  // });
 };
 
 const deletePhoto = (req, res) => {
@@ -79,9 +80,12 @@ const deletePhoto = (req, res) => {
 };
 
 const addPhoto = (req, res) => {
-  console.log(req.params.Cap)
+  console.log(req);
 
-  const queryStr = `INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified") VALUES (${req.params.listingId}, ${req.params.ImageID}, '${req.params.url}', '${req.params.Cap}', ${req.params.Verified});`;
+  const queryStr = `
+    INSERT INTO images (listing_id, "ImageID", "ImageUrl", "Caption", "Verified")
+      VALUES (${req.params.listingId}, ${req.body.ImageID}, '${req.body.url}', '${req.body.Cap}', ${req.body.Verified});
+  `;
 
   pool.query(queryStr, (err) => {
     if (err) {
@@ -93,10 +97,6 @@ const addPhoto = (req, res) => {
 };
 
 const updateCaption = (req, res) => {
-  // const queryStr = "update images set caption = 'Not your average caption!!' where listing_id = 1";
-
-  // http://54.183.55.167:4022/api/123/images -- this should update the photo with ImageID 123 and update it's caption to 'Not your average caption!!'
-
 
   const queryStr = `UPDATE images SET "Caption" = '${req.params.Caption}' WHERE "ImageID" = ${req.params.ImageID}`;
 
