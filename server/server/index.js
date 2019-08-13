@@ -18,9 +18,9 @@ app.get('/api/:listingid/images', cors(), db.getData);
 // app.delete('/', db.deletePhoto);
 app.delete('/api/:listingid/images', cors(), db.deletePhoto);
 
+// app.post('/api/:listingId/:ImageID/:url/:Cap/:Verified/images', cors(), db.addPhoto);
 
-// app.post('/api/:listing_id/:ImageID/:Caption/:Verified/images', cors(), db.addPhoto);
-app.post('/api/:listingId/:ImageID/:url/:Cap/:Verified/images', cors(), db.addPhoto);
+app.post('/api/:listingId/images', cors(), db.addPhoto);
 
 app.put('/api/:ImageID/:Caption/images', cors(), db.updateCaption);
 
