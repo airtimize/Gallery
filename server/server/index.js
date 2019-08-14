@@ -2,12 +2,13 @@ require('newrelic');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const morgan = require('morgan');
 
 const app = express();
 const db = require('./model');
 
 const port = 4022;
-
+app.use(morgan('short'));
 app.get('/loaderio-3e75fb58c8e89178bfa8a05ccbcecc3c.txt', (req, res) => res.sendFile(path.resolve(__dirname, '../../public/loaderio-3e75fb58c8e89178bfa8a05ccbcecc3c.txt')));
 
 app.use('/:listingid', express.static(path.resolve(__dirname, '..', '..', 'public')));
