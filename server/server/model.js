@@ -29,43 +29,32 @@ client.hkeys('hash key', function (err, replies) {
 });
 
 const pool = new Pool(config);
-const getData = (req, res) => {
-  const queryStr = `SELECT * FROM images WHERE listing_id = ${req.params.listingid};`;
 
-  return client.getAsync(req.params.listingid).then((success) => {
-    res.status(200).json(success.rows);// need to figure out how to get this to send info back to the front end.
-
-    // console.log(success)
+const getData = (req, res) => client.getAsync(req.params.listingid)
+  .then((success) => {
+    // need to figure out how to get this to send info back to the front end.
+    res.status(200).json(success.rows);
     console.log('redis success2');
-
-    // CA: when an image is already in redis, it doesn't work. If an image is not in redis then it goes to the catch and find the image in postgres and add it to redis. To make it work for an image already in redit remove the err handling from catch. We need to figure out how to get the image data sent back to the client when the data is already in redis.
-  }).catch( (err) => {
+  /* CA: when an image is already in redis, it doesn't work.
+  If an image is not in redis then it goes to the catch and
+  find the image in postgres and add it to redis.
+  To make it work for an image already in redit remove the err handling from catch.
+  We need to figure out how to get the image data
+  sent back to the client when the data is already in redis. */
+  })
+  .catch(() => {
+    const queryStr = `SELECT * FROM images WHERE listing_id = ${req.params.listingid};`;
     pool.query(queryStr, (err, success) => {
       if (err) {
-        res.send(err);
+        res.status(404).send(err);
         return;
       }
 
-      const key = JSON.stringify(req.params.listingid);
-      console.log('catch success');
-      // console.log(success.rows);
-      // console.log(req.params.listingid)
       client.set(req.params.listingid, JSON.stringify(success.rows));
       res.status(200).json(success.rows);
     });
+  });
 
-  }
-  );
-
-  // pool.query(queryStr, (err, success) => {
-  //   if (err) {
-  //     res.send(err);
-  //     return;
-  //   }
-  //   res.status(200).json(success.rows);
-  //   console.log("success")
-  // });
-};
 
 const deletePhoto = (req, res) => {
   const queryStr = `delete from images where "ImageID" = ${req.params.listingid};`;

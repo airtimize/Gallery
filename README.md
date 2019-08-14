@@ -12,10 +12,6 @@ need to have 2 instances of the ec2 service up to work properly. One terminal ru
 
 Go to modles.js line 36 and 41. read comments. Thats where you left off
 
-
-
-
-
 # Bedroost Gallery Module
 
 > Project description
